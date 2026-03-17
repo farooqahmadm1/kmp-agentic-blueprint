@@ -1,4 +1,4 @@
-# Gemini Blueprint
+# Gemini Blueprint - KMP
 
 The **Gemini Blueprint** is the Gemini equivalent of the "Claude Code" organization-wide blueprint. Introduced in early 2026, it represents a shift from simple system prompts to a tiered, filesystem-based agentic architecture. This repository establishes a reference architecture for **Gemini-native agentic environments**, specifically tuned for **Kotlin Multiplatform (KMP)** development using the **MVI (Model-View-Intent)** pattern and **SOLID** principles.
 
