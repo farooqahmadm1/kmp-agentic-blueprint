@@ -15,9 +15,11 @@ Instead of a single, static prompt, the Gemini Blueprint uses a tiered discovery
 -   **Context Efficiency**: Uses an indexing skill to map large codebases, preventing the AI from "getting lost" in complex module graphs.
 -   **Zero Re-prompting**: The agent self-corrects based on the codebase's local rules as soon as it enters the directory.
 
-## 🚀 How to Adopt this Blueprint
-
-To turn any repository into a "Gemini-Native" brain, follow these steps:
+### Prerequisites & Access
+Gemini interacts with your project using your local environment. To enable Git and PR functionality, ensure:
+- **Local Git**: You have `git` installed and your identity configured (`git config --global user.email "..."`).
+- **GitHub CLI (`gh`)**: For automated PR creation, the GitHub CLI should be installed and authenticated (`gh auth login`).
+- **Terminal Access**: Gemini uses the `run_command` tool to execute these binaries. It implicitly uses your local credentials—you don't need to give it separate tokens.
 
 ### 1. Copy the Configuration
 Copy the following files and directories to the root of your new project:
