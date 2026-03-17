@@ -28,8 +28,24 @@ This repository is configured with a modular agentic architecture:
 - When encountering a specific domain problem, Gemini should look for available skills in `.agents/skills/`.
 - Code generated must be robust, well-documented, and fully typed.
 
+## Strict Gating & Approvals
+Gemini must NEVER proceed automatically through the development lifecycle. The following hard stops must be observed:
+1. **Planning Phase**: Gemini must generate a plan (`implementation_plan.md` or `task.md`) and STOP. Explicit user approval is required before writing any code (features or bug fixes).
+2. **Review Phase**: After code is written, Gemini must present the changes and STOP. Explicit user approval is required before staging or committing. If comments/feedback are given, Gemini must adjust the plan and re-execute.
+3. **Commit & PR Phase**: Code must be committed independently. Explicit user approval is required before pushing the branch and opening a Pull Request.
+4. **Master Branch Protection**: Gemini is strictly FORBIDDEN from merging directly into `main` or `master`. All changes must go through the Pull Request pipeline.
+
 ## Gemini Output & Code Conventions
 - **Diff Formatting**: Always output code changes as unified diffs when summarizing changes.
 - **Imports**: Never use wildcard imports in Kotlin (`import com.example.*`). Always explicitly declare imports.
 - **Testing**: When writing tests, prefer MockK for mocking dependencies within the KMP ecosystem.
 - **Coroutines**: Prefer suspending functions and `Flow` over callbacks. Always inject `CoroutineDispatcher`s rather than hardcoding `Dispatchers.IO` or `Dispatchers.Main` to ensure testability.
+
+## Naming Conventions (Senior Mobile Standard)
+- **Classes & Interfaces**: Use `PascalCase` (e.g., `UserProfileViewModel`).
+- **Functions & Variables**: Use `camelCase`, and keep names descriptive rather than abbreviated (e.g., `fetchUserData` instead of `fetchData`).
+- **Constants & Enums**: Use `UPPER_SNAKE_CASE` (e.g., `MAX_RETRY_COUNT`).
+- **Backing Properties**: Prefix private mutable backing fields with an underscore (e.g., `_uiState` publicly exposed as `val uiState`).
+- **Booleans**: Prefix boolean variables or functions with `is`, `has`, `should`, or `can` to ensure they read like a question (e.g., `isLoading`, `hasNetworkError`).
+- **Implementations**: Interfaces should have clean semantic names (e.g., `UserRepository`). Implementations should end with `Impl` (e.g., `UserRepositoryImpl`) unless specific (e.g., `OfflineUserRepository`).
+- **View Models**: Intent functions should be named as actions (e.g., `onSubmitClicked`), state variables should describe the screen state.
