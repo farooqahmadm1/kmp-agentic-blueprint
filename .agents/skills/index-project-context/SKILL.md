@@ -46,9 +46,15 @@ Use this skill when first entering a new codebase, or after a major restructurin
      - [Current development focus, e.g., "Refactoring User Auth"]
      ```
 
-4. **Chunking Knowledge**:
-   - For large modules, create a local `README.md` or `MODULE_CONTEXT.md` that summarizes that specific module's public API and internal flow.
-   - This prevents the agent from having to read every single file to understand a module's intent.
+4. **Hierarchical Indexing Strategy (Scaling for Large Repos)**:
+   - For repositories with many modules, do not try to fit everything in the root `AI_CONTEXT.md`.
+   - **Root Level (`AI_CONTEXT.md`)**: High-level map, dependency graph, and entry points only.
+   - **Module Level (`.context.md` or `README.md`)**: Each module/feature should have its own local context file. This file should describe:
+     - The module's primary responsibility.
+     - Public API / Interface.
+     - Internal data flow (MVI specifics).
+     - Known limitations or quirks.
+   - **Search Depth**: When working on a specific feature, the agent should first read the root `AI_CONTEXT.md` to find the correct module, and then read the local `.context.md` for that module to get deep-dive details.
 
 5. **Finalize**:
    - Use `notify_user` to present the updated context map and ask if there are any "hidden" dependencies or architectural nuances not caught by the scan.
