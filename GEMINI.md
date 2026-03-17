@@ -26,3 +26,9 @@ This repository is configured with a modular agentic architecture:
 - Before starting a complex task, Gemini should check `.agents/workflows/` for existing standard operating procedures.
 - When encountering a specific domain problem, Gemini should look for available skills in `.agents/skills/`.
 - Code generated must be robust, well-documented, and fully typed.
+
+## Gemini Output & Code Conventions
+- **Diff Formatting**: Always output code changes as unified diffs when summarizing changes.
+- **Imports**: Never use wildcard imports in Kotlin (`import com.example.*`). Always explicitly declare imports.
+- **Testing**: When writing tests, prefer MockK for mocking dependencies within the KMP ecosystem.
+- **Coroutines**: Prefer suspending functions and `Flow` over callbacks. Always inject `CoroutineDispatcher`s rather than hardcoding `Dispatchers.IO` or `Dispatchers.Main` to ensure testability.
