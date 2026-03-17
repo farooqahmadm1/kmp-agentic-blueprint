@@ -22,6 +22,12 @@ This repository is configured with a modular agentic architecture:
 - **Agent Skills**: Custom capabilities for Gemini are located in `.agents/skills/`. Each skill is defined by a `SKILL.md` manifest.
 - **Workflows**: Multi-step, reproducible procedures are stored in `.agents/workflows/`. Gemini can parse and execute these directly.
 
+## AI Context & Memory
+To maintain an efficient "mental map" of the codebase, Gemini should periodically update the `AI_CONTEXT.md` file using the `index-project-context` skill. This file serves as the agent's long-term memory, summarizing:
+- Module dependencies and architectural boundaries.
+- Key class entry points and structural maps.
+- Current active focus areas to maintain continuity across sessions.
+
 ## General Guidelines
 - Gemini should implicitly load this `GEMINI.md` file whenever interacting with the repository.
 - Before starting a complex task, Gemini should check `.agents/workflows/` for existing standard operating procedures.
