@@ -1,6 +1,19 @@
-# Gemini Agent Blueprint
+# Gemini Blueprint
 
-This repository establishes a reference architecture for **Gemini-native agentic environments**, specifically tuned for **Kotlin Multiplatform (KMP)** development using the **MVI (Model-View-Intent)** pattern and **SOLID** principles.
+The **Gemini Blueprint** is the Gemini equivalent of the "Claude Code" organization-wide blueprint. Introduced in early 2026, it represents a shift from simple system prompts to a tiered, filesystem-based agentic architecture. This repository establishes a reference architecture for **Gemini-native agentic environments**, specifically tuned for **Kotlin Multiplatform (KMP)** development using the **MVI (Model-View-Intent)** pattern and **SOLID** principles.
+
+## 🛠️ How it Works
+Instead of a single, static prompt, the Gemini Blueprint uses a tiered discovery system:
+1.  **Source of Truth (`GEMINI.md`)**: The root-level context file that defines the project's identity, tech stack, and non-negotiable architectural rules.
+2.  **Skill Manifests (`.agents/skills/`)**: Specialized `SKILL.md` files that Gemini "discovers" to perform complex, domain-specific tasks (like MVI scaffolding or DB migrations).
+3.  **Reproducible Workflows (`.agents/workflows/`)**: Standard operating procedures for multi-step sequences like PR reviews or releases.
+4.  **AI Memory (`AI_CONTEXT.md`)**: A living index that allows the agent to maintain a mental map of large, modular codebases.
+
+## ✨ Key Benefits
+-   **Consistency**: Ensures every agent (and developer) follows the exact same senior-level naming and architectural standards.
+-   **Strict Safety**: Implements mandatory "Hard Stops" for human approval before planning, coding, or committing.
+-   **Context Efficiency**: Uses an indexing skill to map large codebases, preventing the AI from "getting lost" in complex module graphs.
+-   **Zero Re-prompting**: The agent self-corrects based on the codebase's local rules as soon as it enters the directory.
 
 ## 🚀 How to Adopt this Blueprint
 
