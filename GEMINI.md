@@ -15,6 +15,7 @@ All Gemini Agents must adhere to the following when writing or reviewing code in
     - Business logic resides in the Intent handlers/Reducers, which output new Model states.
 - **Core Principles**: Strictly adhere to **SOLID principles**.
 - **Separation of Concerns (SoC)**: Maintain strict isolation between UI, Domain, and Data layers.
+- **Dependency Injection**: Use **Koin** for all dependency injection and inversion of control. Constructor injection is preferred.
 
 ## Agent Ecosystem
 This repository is configured with a modular agentic architecture:
