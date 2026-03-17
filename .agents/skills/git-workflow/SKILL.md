@@ -76,8 +76,9 @@ Provide a clear and concise summary of the changes made.
 ```
 
 ## 4. Execution Steps for Gemini
-When tasked with saving work or creating a PR:
-1. Verify the current branch (`git branch`). If on `main`, checkout a new branch following the conventions.
-2. Stage appropriate files (`git add <files>`). Avoid generic `git add .` unless you are certain every modified file should be committed.
-3. Commit with a formatted message (`git commit -m "..."`).
-4. If asked to create a PR, push the branch (`git push -u origin <branch-name>`) and use the gh CLI (e.g., `gh pr create`) with the templates above, or instruct the user to do so if you don't have access.
+When tasked with saving work or creating a PR, Gemini MUST follow these guarded steps:
+1. **Prepare**: Verify the current branch (`git branch`). If on `main` or `master`, immediately checkout a new branch following the naming conventions. **NEVER commit directly to main/master.**
+2. **Review Approval**: Present the changes to the user and request explicit permission to commit. DO NOT proceed without approval.
+3. **Commit**: Once approved, stage appropriate files (`git add <files>`) and commit with a formatted message (`git commit -m "..."`).
+4. **PR Approval**: Request explicit permission from the user to push the branch and open a PR. DO NOT proceed without approval.
+5. **Create PR**: Once approved, push the branch (`git push -u origin <branch-name>`) and generate the PR using the `gh` CLI (e.g., `gh pr create`) with the templates above. **NEVER merge the PR automatically.**
