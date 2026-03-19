@@ -65,7 +65,3 @@ This blueprint is designed for safety. The agent is **FORBIDDEN** from:
 - Merging PRs automatically.
 - Proceeding from planning to execution without explicit approval.
 - Committing code without a final manual review.
-
----
-
-*Set up by Antigravity.*
